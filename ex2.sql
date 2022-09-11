@@ -7,16 +7,14 @@
 	 
 5-selet * from student where id not in (select student_id from enrolled )
 
-6-select count(e.student_id) from from enrolled e, majorsIn m,department d 
+6-select count(m.student_id) from majorsIn m,department d 
+	where d.id=m.dept_id and d.name='CS' and   course_crn='CSC275'
+
+7-select count(e.student_id) from enrolled e, majorsIn m,department d 
 	where e.student_id=m.student_id and d.id=m.dept_id and d.name='CS'
- 	and   course_crn='CSC275' group by e.student_id
 
-7-select count(e.student_id) from from enrolled e, majorsIn m,department d 
-	where e.student_id=m.student_id and d.id=m.dept_id and d.name='CS'
- 	 group by e.student_id
+8-select student_id,  count(dept_id) from majorsIn  group by student_id
 
-8-select student_id,  count(dept_id) from majorsIn  group by e.student_id
-
-9-select  d.name,count(m.student_id)from from majorsIn m,department d 
+9-select  d.name,count(m.student_id)from majorsIn m,department d 
 	where  d.id=m.dept_id having count(distinct)>1
   
